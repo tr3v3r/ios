@@ -4,21 +4,15 @@
 
 // Complete the diagonalDifference function below.
 - (NSNumber *) diagonalDifference:(NSArray *)array {
-    double diagonalOne = 0;
-    double diagonalTwo = 0;
+    double difference = 0;
+    int i;   
     
-    NSString *rowString = array[0];
+    for(i = 0; i < array.count; i++) {
+        NSArray * rowArray = [array[i] componentsSeparatedByString:@" "];
+        difference = difference + [rowArray[i] doubleValue] - [rowArray[rowArray.count - i - 1] doubleValue];
+    }    
     
-    NSArray * rowArray = [rowString componentsSeparatedByString:@" "];
-    
-    NSLog(@"%@", rowArray);
-    
-    int i;
-    int j;
-    
-    
-    return 0;
-
+    return [NSNumber numberWithDouble:fabs(difference)];
 }
 
 @end
